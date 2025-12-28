@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Colors -->
+    <color name="forge_orange">#FF6B35</color>
+    <color name="forge_gold">#FFB347</color>
+    <color name="forge_dark">#1A1A2E</color>
+    <color name="forge_charcoal">#16213E</color>
+    <color name="forge_steel">#0F3460</color>
+    <color name="spark_yellow">#FFD93D</color>
+    
+    <!-- Keyboard Colors -->
+    <color name="keyboard_background">#1A1A2E</color>
+    <color name="keyboard_key_background">#2D2D44</color>
+    <color name="keyboard_key_pressed">#3D3D5C</color>
+    <color name="keyboard_text">#FFFFFF</color>
+    <color name="keyboard_text_secondary">#AAAAAA</color>
+    <color name="enhance_bar_background">#0F3460</color>
+    
+    <!-- Semantic Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#FF6B6B</color>
+    <color name="warning">#FFC107</color>
+    <color name="info">#2196F3</color>
+    
+    <!-- Legacy support -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

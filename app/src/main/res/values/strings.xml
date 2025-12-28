@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PromptForge</string>
+    <string name="tile_label">Enhance Prompt</string>
+    
+    <!-- Main UI -->
+    <string name="enhance_button">✨ Enhance Prompt</string>
+    <string name="enhancing">Enhancing…</string>
+    <string name="copy_button">Copy</string>
+    <string name="paste_button">Paste</string>
+    <string name="clear_button">Clear</string>
+    
+    <!-- Tabs -->
+    <string name="tab_enhance">Enhance</string>
+    <string name="tab_templates">Templates</string>
+    <string name="tab_history">History</string>
+    
+    <!-- Placeholders -->
+    <string name="input_placeholder">Enter your prompt here…</string>
+    <string name="enhanced_label">Enhanced Prompt:</string>
+    <string name="original_label">Original:</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="setting_auto_copy">Auto-copy to clipboard</string>
+    <string name="setting_notifications">Show notifications</string>
+    <string name="setting_haptic">Haptic feedback</string>
+    <string name="setting_keep_loaded">Keep model loaded</string>
+    <string name="setting_widget">Enable floating widget</string>
+    <string name="setting_keyboard">Enable keyboard</string>
+    
+    <!-- Target AI -->
+    <string name="target_label">Target AI:</string>
+    <string name="target_claude">Claude</string>
+    <string name="target_gpt">ChatGPT</string>
+    <string name="target_gemini">Gemini</string>
+    <string name="target_local">Local</string>
+    <string name="target_generic">Any AI</string>
+    
+    <!-- Enhancement Levels -->
+    <string name="level_label">Enhancement Level:</string>
+    <string name="level_minimal">Light Touch</string>
+    <string name="level_balanced">Balanced</string>
+    <string name="level_maximum">Full Enhancement</string>
+    
+    <!-- Notifications -->
+    <string name="notification_service_title">PromptForge Active</string>
+    <string name="notification_service_text">AI model ready for instant enhancement</string>
+    <string name="notification_enhanced_title">Prompt Enhanced ✨</string>
+    <string name="notification_copy_action">Copy</string>
+    
+    <!-- Errors -->
+    <string name="error_no_text">No text to enhance</string>
+    <string name="error_model_loading">Model is still loading…</string>
+    <string name="error_enhancement_failed">Enhancement failed</string>
+    <string name="error_service_unavailable">Service not available</string>
+    
+    <!-- Success -->
+    <string name="success_copied">Enhanced prompt copied!</string>
+    <string name="success_enhanced">Prompt enhanced!</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title">Welcome to PromptForge</string>
+    <string name="onboarding_subtitle">Transform your prompts with AI</string>
+    <string name="onboarding_step1_title">Share from Any App</string>
+    <string name="onboarding_step1_desc">Select text and share to PromptForge</string>
+    <string name="onboarding_step2_title">Use the Floating Widget</string>
+    <string name="onboarding_step2_desc">Quick access from anywhere on screen</string>
+    <string name="onboarding_step3_title">Try the Keyboard</string>
+    <string name="onboarding_step3_desc">Enhance prompts as you type</string>
+    
+    <!-- Accessibility -->
+    <string name="accessibility_description">PromptForge uses accessibility to detect when AI apps are open and show the enhancement widget automatically.</string>
+    
+    <!-- About -->
+    <string name="about_title">About PromptForge</string>
+    <string name="about_version">Version %s</string>
+    <string name="about_author">Built by Adwaizer AI Consulting Inc.</string>
+    <string name="about_model">Powered by T5Gemma 2 (on-device)</string>
+</resources>

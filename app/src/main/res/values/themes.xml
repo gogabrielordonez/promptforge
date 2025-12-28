@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.PromptForge" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/forge_orange</item>
+        <item name="colorPrimaryVariant">@color/forge_gold</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/spark_yellow</item>
+        <item name="colorSecondaryVariant">@color/forge_gold</item>
+        <item name="colorOnSecondary">@color/forge_dark</item>
+        <item name="android:statusBarColor">@color/forge_dark</item>
+        <item name="android:navigationBarColor">@color/forge_charcoal</item>
+    </style>
+
+    <!-- Transparent theme for overlay activities -->
+    <style name="Theme.PromptForge.Transparent" parent="Theme.PromptForge">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- Splash screen theme -->
+    <style name="Theme.PromptForge.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/forge_dark</item>
+        <item name="postSplashScreenTheme">@style/Theme.PromptForge</item>
+    </style>
+</resources>
