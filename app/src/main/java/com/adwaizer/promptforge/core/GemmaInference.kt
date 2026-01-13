@@ -61,18 +61,30 @@ class GemmaInference @Inject constructor(
      */
     suspend fun initialize(): Result<Unit> = withContext(Dispatchers.IO) {
         if (isModelLoaded) {
+            android.util.Log.d(TAG, "Model already loaded")
             return@withContext Result.success(Unit)
         }
 
         state = InferenceState.Loading
+        android.util.Log.d(TAG, "Starting model initialization...")
 
         try {
             val modelPath = getModelPath()
+            val modelFile = File(modelPath)
 
-            if (!File(modelPath).exists()) {
-                // Try to copy from assets
+            android.util.Log.d(TAG, "Model path: $modelPath")
+
+            if (!modelFile.exists()) {
+                android.util.Log.d(TAG, "Model not found in internal storage, copying from assets...")
                 copyModelFromAssets()
             }
+
+            if (!modelFile.exists()) {
+                throw IllegalStateException("Model file not found after copy attempt: $modelPath")
+            }
+
+            android.util.Log.d(TAG, "Model file exists: ${modelFile.length()} bytes")
+            android.util.Log.d(TAG, "Creating LlmInference with maxTokens=$MAX_TOKENS, topK=$TOP_K, temp=$TEMPERATURE")
 
             val options = LlmInferenceOptions.builder()
                 .setModelPath(modelPath)
@@ -82,12 +94,15 @@ class GemmaInference @Inject constructor(
                 .setRandomSeed(RANDOM_SEED)
                 .build()
 
+            android.util.Log.d(TAG, "Loading model into MediaPipe...")
             llmInference = LlmInference.createFromOptions(context, options)
             isModelLoaded = true
             state = InferenceState.Ready
+            android.util.Log.d(TAG, "Model loaded successfully!")
 
             Result.success(Unit)
         } catch (e: Exception) {
+            android.util.Log.e(TAG, "Failed to initialize model: ${e.message}", e)
             state = InferenceState.Error(e.message ?: "Unknown error loading model")
             Result.failure(e)
         }
@@ -191,11 +206,31 @@ class GemmaInference @Inject constructor(
         val targetFile = File(modelsDir, MODEL_FILENAME)
 
         if (!targetFile.exists()) {
-            context.assets.open("models/$MODEL_FILENAME").use { input ->
-                targetFile.outputStream().use { output ->
-                    input.copyTo(output)
+            try {
+                android.util.Log.d(TAG, "Starting model copy from assets...")
+                context.assets.open("models/$MODEL_FILENAME").use { input ->
+                    targetFile.outputStream().buffered(8 * 1024 * 1024).use { output ->
+                        val buffer = ByteArray(8 * 1024 * 1024) // 8MB buffer
+                        var bytesRead: Int
+                        var totalBytes = 0L
+                        while (input.read(buffer).also { bytesRead = it } != -1) {
+                            output.write(buffer, 0, bytesRead)
+                            totalBytes += bytesRead
+                            if (totalBytes % (100 * 1024 * 1024) == 0L) {
+                                android.util.Log.d(TAG, "Copied ${totalBytes / (1024 * 1024)} MB...")
+                            }
+                        }
+                        output.flush()
+                    }
                 }
+                android.util.Log.d(TAG, "Model copy complete: ${targetFile.length()} bytes")
+            } catch (e: Exception) {
+                android.util.Log.e(TAG, "Failed to copy model: ${e.message}", e)
+                targetFile.delete()
+                throw e
             }
+        } else {
+            android.util.Log.d(TAG, "Model already exists: ${targetFile.length()} bytes")
         }
     }
 
