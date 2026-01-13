@@ -14,10 +14,6 @@ import javax.inject.Singleton
 class EnhancementEngine @Inject constructor(
     private val inference: GemmaInference
 ) {
-    companion object {
-        private const val TAG = "EnhancementEngine"
-    }
-
     /**
      * Enhance a prompt with full options
      */
@@ -241,10 +237,12 @@ class EnhancementEngine @Inject constructor(
         return BUILT_IN_TEMPLATES.find { it.id == templateId }
     }
 
-    /**
-     * Built-in templates for common use cases
-     */
-    companion object Templates {
+    companion object {
+        private const val TAG = "EnhancementEngine"
+
+        /**
+         * Built-in templates for common use cases
+         */
         val BUILT_IN_TEMPLATES = listOf(
             Template(
                 id = "code_review",

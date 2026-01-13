@@ -112,22 +112,16 @@ class GemmaInference @Inject constructor(
     /**
      * Generate response as a streaming flow
      * Use for longer responses or progressive UI updates
+     * Note: Current MediaPipe API doesn't support streaming callbacks,
+     * so this emits the full response at once.
      */
     fun generateStream(prompt: String): Flow<String> = flow {
         ensureModelLoaded()
 
         val inference = llmInference ?: throw IllegalStateException("Model not loaded")
 
-        // MediaPipe streaming callback
-        inference.generateResponseAsync(prompt) { partialResult, done ->
-            if (!done) {
-                // Emit partial result (this is a simplified version)
-                // In practice, you'd use a channel or callback mechanism
-            }
-        }
-
-        // For now, emit the full response
-        // Real implementation would use proper streaming
+        // MediaPipe current API only supports sync generation
+        // Emit the full response
         val fullResponse = inference.generateResponse(prompt)
         emit(fullResponse)
     }.flowOn(Dispatchers.IO)

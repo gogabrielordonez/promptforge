@@ -241,6 +241,7 @@ fun PromptForgeApp(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EnhanceTab(
     inputText: String,
@@ -362,6 +363,7 @@ fun EnhanceTab(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TemplatesTab(onSelectTemplate: (Template) -> Unit) {
     val templates = remember {
