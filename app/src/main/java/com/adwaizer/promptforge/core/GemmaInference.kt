@@ -31,8 +31,8 @@ class GemmaInference @Inject constructor(
     companion object {
         private const val TAG = "GemmaInference"
 
-        // Model configuration - Gemma 1.1 2B IT INT4
-        private const val MODEL_FILENAME = "gemma-1.1-2b-it-cpu-int4.bin"
+        // Model configuration - Official Google Gemma 2B IT GPU INT4
+        private const val MODEL_FILENAME = "gemma-2b-it-gpu-int4.bin"
         private const val MAX_TOKENS = 8192  // Gemma 2B supports up to 8K context
         private const val TOP_K = 40
         private const val TEMPERATURE = 0.7f

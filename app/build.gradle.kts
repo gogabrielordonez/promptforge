@@ -19,8 +19,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         
-        // Model configuration - Gemma 1.1 2B IT INT4 (from HuggingFace)
-        buildConfigField("String", "MODEL_FILENAME", "\"gemma-1.1-2b-it-cpu-int4.bin\"")
+        // Model configuration - Official Google Gemma 2B IT GPU INT4
+        buildConfigField("String", "MODEL_FILENAME", "\"gemma-2b-it-gpu-int4.bin\"")
         buildConfigField("int", "MAX_TOKENS", "8192")
         buildConfigField("int", "DEFAULT_TEMPERATURE", "70") // 0.7 * 100
     }
